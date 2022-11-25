@@ -1,4 +1,4 @@
-package EjerciciosVariados.BarajaCartas;
+package Ejercicios.Variados.BarajaCartas;
 
 public enum Palo {
 
