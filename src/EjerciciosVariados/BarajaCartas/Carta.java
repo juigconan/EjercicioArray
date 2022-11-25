@@ -5,9 +5,9 @@ import java.util.Objects;
 public class Carta {
 
 	private int numero;
-	private static final String[] NUMEROS_STR = {"As", "Sota", "Caballo", "Rey"};
+	private static final String[] NUMEROS_STR = { "As", "Sota", "Caballo", "Rey" };
 	private Palo palo;
-	
+
 	public Carta(int numero, Palo palo) {
 		setNumero(numero);
 		setPalo(palo);
@@ -18,6 +18,9 @@ public class Carta {
 	}
 
 	public void setNumero(int numero) {
+		if (numero < 1 || numero > 12) {
+			throw new IllegalArgumentException("ERROR: El numero debe estar entre 1 y 12.");
+		}
 		this.numero = numero;
 	}
 
@@ -26,7 +29,7 @@ public class Carta {
 	}
 
 	public void setPalo(Palo palo) {
-		if(palo.equals(null)) {
+		if (palo.equals(null)) {
 			throw new NullPointerException("ERROR: El palo no puede ser nulo.");
 		}
 		this.palo = palo;
@@ -51,26 +54,24 @@ public class Carta {
 
 	@Override
 	public String toString() {
-		
+
 		switch (getNumero()) {
 		case 1: {
-			return "El " + NUMEROS_STR[0] + " de " + getPalo().toString();
+			return "el " + NUMEROS_STR[0] + " de " + getPalo().toString();
 		}
-		case 10:{
-			return "El " + NUMEROS_STR[1] + " de " + getPalo().toString();
+		case 10: {
+			return "la " + NUMEROS_STR[1] + " de " + getPalo().toString();
 		}
 		case 11: {
-			return "El " + NUMEROS_STR[2] + " de " + getPalo().toString();
+			return "el " + NUMEROS_STR[2] + " de " + getPalo().toString();
 		}
-		case 12:{
-			return "El " + NUMEROS_STR[3] + " de " + getPalo().toString();
+		case 12: {
+			return "el " + NUMEROS_STR[3] + " de " + getPalo().toString();
 		}
 		default:
-			return "El " + getNumero() + " de " + getPalo().toString();
+			return "el " + getNumero() + " de " + getPalo().toString();
 		}
-		
+
 	}
-	
-	
 
 }
