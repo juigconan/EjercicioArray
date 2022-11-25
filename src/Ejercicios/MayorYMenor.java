@@ -6,7 +6,7 @@ public class MayorYMenor {
 	public static void main(String[] args) {
 
 		int[] arrayNumeros;
-		int cantidadACrear, aux;
+		int cantidadACrear;
 		do {
 			System.out.println("Introduce cuantos numeros enteros desea crear");
 			cantidadACrear = Entrada.entero();

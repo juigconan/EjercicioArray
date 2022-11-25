@@ -40,6 +40,13 @@ public class Ajedrez {
 			}
 			System.out.println();
 		}
+		
+		for (int i = 0; i < tableroAMano.length; i++) {
+			for (int j = 0; j < tableroAMano[i].length; j++) {
+				System.out.print(tableroAMano[i][j]);				
+			}
+			System.out.println();
+		}
 	}
 
 }
