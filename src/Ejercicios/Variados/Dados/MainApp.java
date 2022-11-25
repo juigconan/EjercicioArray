@@ -41,7 +41,7 @@ public class MainApp {
 	}
 
 	private static String leerNombreJugador() {
-		String nombre = null;
+		String nombre;
 
 		System.out.print("se llamara: ");
 		nombre = Entrada.cadena();
