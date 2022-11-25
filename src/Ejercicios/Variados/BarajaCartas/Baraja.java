@@ -57,9 +57,9 @@ public class Baraja {
 		 * determinando de esta forma si se han intercambiado o no.
 		 */
 		for (int i = 0; i < numIntercambios; i++) {
-			posicionOriginal = generador.nextInt(0, MAX_CARTAS);
+			posicionOriginal = generador.nextInt(MAX_CARTAS);
 			cartaOriginal = cartas[posicionOriginal];
-			posicionDestino = generador.nextInt(0, MAX_CARTAS);
+			posicionDestino = generador.nextInt(MAX_CARTAS);
 			cartaNueva = cartas[posicionDestino];
 			System.out.printf("%nAntes del cambio ");
 			comprobarPosicion(posicionOriginal);
