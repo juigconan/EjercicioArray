@@ -1,4 +1,4 @@
-package Ejercicos;
+package Ejercicios;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 public class LetraDni {

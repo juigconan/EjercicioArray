@@ -1,4 +1,4 @@
-package Ejercicos;
+package Ejercicios;
 
 public class Sujeto {
 
