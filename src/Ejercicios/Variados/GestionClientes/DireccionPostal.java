@@ -14,6 +14,12 @@ public class DireccionPostal {
 		setLocalidad(localidad);
 		setCodigoPostal(codigoPostal);
 	}
+	
+	public DireccionPostal(DireccionPostal direccionPostal) {
+		setDireccion(direccionPostal.getDireccion());
+		setLocalidad(direccionPostal.getLocalidad());
+		setCodigoPostal(direccionPostal.getCodigoPostal());
+	}
 
 	private void setDireccion(String direccion) {
 		this.direccion = direccion;
@@ -63,7 +69,7 @@ public class DireccionPostal {
 
 	@Override
 	public String toString() {
-		return "direccion: " + direccion + ", localidad: " + localidad + ", codigoPostal: " + codigoPostal;
+		return "direccion: " + direccion + ", localidad: " + localidad + ", codigoPostal: " + codigoPostal + ", ";
 	}
 
 	

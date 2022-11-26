@@ -71,6 +71,8 @@ public class DatosPersonales {
 	}
 
 	public LocalDate getFechaNacimiento() {
+		//Creo que asi se crea una fecha nueva, intentando evitar aliasing
+		LocalDate fechaNacimiento = LocalDate.parse(this.fechaNacimiento.toString());
 		return fechaNacimiento;
 	}
 
@@ -95,7 +97,7 @@ public class DatosPersonales {
 	@Override
 	public String toString() {
 		return "nombre: " + nombre + ", apellidos: " + apellidos + ", dni: " + dni + ", fechaNacimiento: "
-				+ fechaNacimiento;
+				+ fechaNacimiento + ", ";
 	}
 
 }
