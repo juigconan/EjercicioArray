@@ -56,6 +56,4 @@ public class Cliente {
 		return datosPersonales.toString() + datosContacto.toString();
 	}
 
-	
-
 }
