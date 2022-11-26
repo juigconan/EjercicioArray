@@ -1,7 +1,5 @@
 package Ejercicios.Variados.Dados;
 
-import org.iesalandalus.programacion.utilidades.Entrada;
-
 public class JuegoDados {
 
 	private static final int MAX_JUGADORES = 10;
