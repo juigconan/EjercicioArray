@@ -25,17 +25,17 @@ public class Cliente {
 		this.datosContacto = new DatosContacto(datosContacto);
 	}
 	
-	@Override
-	public int hashCode() {
-		return Objects.hash(datosContacto, datosPersonales);
-	}
-
 	public DatosContacto getDatosContacto() {
 		return new DatosContacto(datosContacto);
 	}
 
 	public DatosPersonales getDatosPersonales() {
 		return new DatosPersonales(datosPersonales);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(datosContacto, datosPersonales);
 	}
 
 	@Override
@@ -47,8 +47,7 @@ public class Cliente {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(datosContacto, other.datosContacto)
-				&& Objects.equals(datosPersonales, other.datosPersonales);
+		return Objects.equals(datosPersonales.getDni(), other.datosPersonales.getDni());
 	}
 
 	@Override
