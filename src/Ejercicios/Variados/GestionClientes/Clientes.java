@@ -1,15 +1,15 @@
 package Ejercicios.Variados.GestionClientes;
 
-import java.util.Iterator;
 
 public class Clientes {
 	
-	private static final int MAX_CLIENTES = 50;
+	private static final int MAX_CLIENTES = 20;
 	private Cliente[] coleccionClientes;
 	private int numClientes;
 	
 	public Clientes () {
 		coleccionClientes = new Cliente[MAX_CLIENTES];
+		numClientes = 0;
 	}
 	
 	public Clientes (Clientes clientes) {
@@ -17,7 +17,11 @@ public class Clientes {
 	}
 
 	private void setClientes(Clientes clientes) {
-		
+		if(clientes == null) {
+			throw new NullPointerException("Los clientes no pueden ser nulos.");
+		}
+		coleccionClientes = copiaProfundaClientes(clientes.coleccionClientes);
+		numClientes = clientes.numClientes;
 	}
 
 	private Cliente[] copiaProfundaClientes(Cliente[] clientes) {
@@ -28,7 +32,7 @@ public class Clientes {
 		return copiaClientes;
 	}
 	
-	public Cliente[] getCliente() {
+	public Cliente[] getClientes() {
 		return copiaProfundaClientes(coleccionClientes);
 	}
 
@@ -37,7 +41,7 @@ public class Clientes {
 	}
 	
 	public void Insertar(Cliente cliente) {
-		if(indiceNoSuperaCapacidad(coleccionClientes.length)) {
+		if(indiceNoSuperaCapacidad(buscarIndiceCliente(cliente))) {
 			
 		}
 	}
@@ -73,19 +77,15 @@ public class Clientes {
 	}
 
 	public Cliente buscarCliente(Cliente cliente) {
-		Cliente clienteABuscar = null;
-		boolean clienteExiste = false;
-		for (int i = 0; i < coleccionClientes.length; i++) {
-			if(coleccionClientes[i].equals(cliente)) {
-				clienteExiste = true;
-			}
-		}
-		
-		return clienteABuscar;
+		int indice = buscarIndiceCliente(cliente);
+		return new Cliente(coleccionClientes[indice]) ;
 	}
 
 	public void borrarCliente(Cliente cliente) {
-	
+		int indice = buscarIndiceCliente(cliente);
+		desplazarUnaPosicionHaciaIzquierda(indice);
+		coleccionClientes[numClientes] = null;
+		numClientes--;
 	}
 
 	private void desplazarUnaPosicionHaciaIzquierda(int posicion) {
@@ -97,12 +97,9 @@ public class Clientes {
 		}
 		if(indiceNoSuperaTamano(posicion)) {
 			throw new IllegalArgumentException("ERROR: La posicion debe estar dentro del array");
-			
 		}
-		//Guardo el valor que vamos a machacar
-		//Cliente clienteAux = coleccionClientes[posicion - 1];
-		for (int i = posicion; i < coleccionClientes.length; i++) {
-			coleccionClientes[i - 1] = coleccionClientes[i];
+		for (int i = posicion; i < coleccionClientes.length - 1; i++) {
+			coleccionClientes[i] = coleccionClientes[i+1];
 		}
 	}
 	
