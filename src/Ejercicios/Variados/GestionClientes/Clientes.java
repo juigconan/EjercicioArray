@@ -21,7 +21,7 @@ public class Clientes {
 			throw new NullPointerException("Los clientes no pueden ser nulos.");
 		}
 		coleccionClientes = copiaProfundaClientes(clientes.coleccionClientes);
-		numClientes = clientes.numClientes;
+		numClientes = clientes.getNumClientes();
 	}
 
 	private Cliente[] copiaProfundaClientes(Cliente[] clientes) {
@@ -40,9 +40,13 @@ public class Clientes {
 		return numClientes;
 	}
 	
-	public void Insertar(Cliente cliente) {
-		if(indiceNoSuperaCapacidad(buscarIndiceCliente(cliente))) {
-			
+	public void insertar(Cliente cliente) {
+		if(indiceNoSuperaCapacidad(getNumClientes())) {
+			numClientes++;
+			coleccionClientes[getNumClientes()] = cliente;
+		}
+		else {
+			throw new IllegalArgumentException("no se pueden insertar nuevos clientes");
 		}
 	}
 
@@ -62,7 +66,7 @@ public class Clientes {
 
 	private boolean indiceNoSuperaTamano(int indice) {
 		boolean noSuperaTamano = true;
-		if(indice >= coleccionClientes.length) {
+		if(indice > getNumClientes()) {
 			noSuperaTamano = false;
 		}
 		return noSuperaTamano;
@@ -84,7 +88,7 @@ public class Clientes {
 	public void borrarCliente(Cliente cliente) {
 		int indice = buscarIndiceCliente(cliente);
 		desplazarUnaPosicionHaciaIzquierda(indice);
-		coleccionClientes[numClientes] = null;
+		coleccionClientes[getNumClientes()] = null;
 		numClientes--;
 	}
 
@@ -95,7 +99,7 @@ public class Clientes {
 		if(posicion < 0) {
 			throw new IllegalArgumentException("ERROR: La posicion debe ser positiva y mayor que 0");
 		}
-		if(indiceNoSuperaTamano(posicion)) {
+		if(!indiceNoSuperaTamano(posicion)) {
 			throw new IllegalArgumentException("ERROR: La posicion debe estar dentro del array");
 		}
 		for (int i = posicion; i < coleccionClientes.length - 1; i++) {
@@ -104,7 +108,14 @@ public class Clientes {
 	}
 	
 	public String[] representar() {
-		return null;
+		String[] ClientesARepresentar = new String[getNumClientes()];
+		StringBuilder sb = new StringBuilder();
+	for (int i = 0; i < ClientesARepresentar.length; i++) {
+		sb.append("Cliente ").append(i+1).append(": ").append(coleccionClientes[i].toString()).append("/n");
+		ClientesARepresentar[i] = sb.toString();
+		sb.setLength(0); //Asi vaciamos el SB
+	}
+		return ClientesARepresentar;
 	}
 	
 }
